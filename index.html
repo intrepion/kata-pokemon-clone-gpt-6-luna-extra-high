@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f4e9">
+    <meta name="description" content="Explore Mosswood, meet six original forest creatures, and bring your favorites along in a tiny browser adventure.">
+    <title>Mosswood Field Club</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='3' y='3' width='34' height='34' rx='11' fill='%23295d43'/%3E%3Cpath d='M20 31C8 23 13 11 20 8c7 5 11 16 0 23Z' fill='%2398d87d'/%3E%3Cpath d='M18 27c1-7 3-11 7-15' stroke='%23295d43' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="Mosswood Field Club home">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span class="brand-copy"><strong>MOSSWOOD</strong><small>FIELD CLUB <i>•</i> EST. '96</small></span>
+        </a>
+        <div class="topbar-center"><span class="tiny-sun" aria-hidden="true">✳</span> A POCKET-SIZED WILDERNESS</div>
+        <div class="topbar-right">
+          <div class="weather-chip"><span class="weather-dot"></span><span>Clear skies</span></div>
+          <button id="resetButton" class="reset-button" type="button" title="Start a new expedition">Start over <span aria-hidden="true">↗</span></button>
+        </div>
+      </header>
+
+      <main id="home">
+        <section class="welcome-row" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR NEW FIELD JOURNAL</p>
+            <h1 id="page-title">The woods are <em>wide awake.</em></h1>
+            <p class="welcome-subtitle">A little fresh air. A few new friends. See what the tall grass is hiding.</p>
+          </div>
+          <div class="guide-count" aria-live="polite">
+            <div class="guide-count-icon" aria-hidden="true">✳</div>
+            <div><span class="guide-count-label">FIELD GUIDE</span><strong><span id="guideCount">1</span><span class="guide-count-total"> / 6</span></strong></div>
+            <span class="guide-count-caption">neighbors met</span>
+          </div>
+        </section>
+
+        <div class="game-layout">
+          <section class="play-column" aria-label="Mosswood game">
+            <div class="scene-card">
+              <div class="scene-bar">
+                <div class="location-name"><span class="location-pip"></span><div><strong>MOSSWOOD CROSSING</strong><small>North trail · late morning</small></div></div>
+                <div class="scene-coordinates"><span aria-hidden="true">⌖</span> <span id="coordinates">11, 12</span></div>
+              </div>
+              <div class="scene-wrap" id="sceneWrap">
+                <canvas id="gameCanvas" width="768" height="512" tabindex="0" aria-label="Mosswood forest map. Walk through the grass to meet creatures." role="img"></canvas>
+                <div id="battleHud" class="battle-hud" hidden aria-live="polite"></div>
+                <div class="scene-caption"><span class="caption-spark" aria-hidden="true">✳</span><span id="sceneCaption">The wind smells like rain and wild mint.</span></div>
+              </div>
+              <div class="scene-footer">
+                <span><i class="terrain-icon tall-grass-icon" aria-hidden="true"></i> Long grass hides the locals</span>
+                <span><i class="terrain-icon trail-icon" aria-hidden="true"></i> Trail leads back to camp</span>
+                <span class="footer-save"><span class="save-indicator"></span> JOURNAL SAVED</span>
+              </div>
+            </div>
+
+            <div class="control-deck">
+              <div id="mapControls" class="map-controls">
+                <div class="field-tip"><span class="tip-star" aria-hidden="true">✳</span><p><strong id="tipTitle">Look around.</strong><span id="tipText">The tall grass rustles when something is near.</span></p></div>
+                <div class="walk-controls" aria-label="Movement controls">
+                  <span class="control-label">TAKE A WALK</span>
+                  <div class="dpad" role="group" aria-label="Move around the forest">
+                    <span></span><button type="button" data-direction="up" aria-label="Walk north">↑</button><span></span>
+                    <button type="button" data-direction="left" aria-label="Walk west">←</button><span class="dpad-center" aria-hidden="true">✳</span><button type="button" data-direction="right" aria-label="Walk east">→</button>
+                    <span></span><button type="button" data-direction="down" aria-label="Walk south">↓</button><span></span>
+                  </div>
+                  <span class="keyboard-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows</span>
+                </div>
+                <button id="restButton" class="rest-button" type="button"><span class="rest-icon" aria-hidden="true">⌂</span><span><strong>REST AT THE HUT</strong><small>Press E when you arrive</small></span><span class="rest-arrow" aria-hidden="true">↗</span></button>
+              </div>
+              <div id="battleControls" class="battle-controls" hidden>
+                <div class="battle-prompt"><span class="battle-prompt-mark" aria-hidden="true">✳</span><div><strong id="battlePromptTitle">What will you do?</strong><small id="battlePromptText">Choose your next move.</small></div></div>
+                <div class="battle-actions" role="group" aria-label="Battle actions">
+                  <button id="attackButton" class="battle-action move-action" type="button"><span class="action-glyph" aria-hidden="true">✦</span><span><strong id="moveName">Softleaf Flick</strong><small id="moveDetail">GROVE · 5 POWER</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+                  <button id="catchButton" class="battle-action catch-action" type="button"><span class="orb-glyph" aria-hidden="true"><i></i></span><span><strong>Offer a sphere</strong><small><span id="sphereCount">5</span> LEFT IN YOUR SATCHEL</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+                  <button id="runButton" class="battle-action run-action" type="button"><span class="action-glyph" aria-hidden="true">↗</span><span><strong>Head back to trail</strong><small>Leave this encounter</small></span></button>
+                </div>
+                <p class="battle-key-hint">Quick hands? Press <kbd>1</kbd> for your move, <kbd>2</kbd> for a sphere.</p>
+              </div>
+            </div>
+          </section>
+
+          <aside class="journal-column" aria-label="Field journal">
+            <section class="paper-card objective-card">
+              <div class="card-overline"><span>THE DAY'S LITTLE QUEST</span><span class="hand-star" aria-hidden="true">✳</span></div>
+              <h2>Get to know the neighbors.</h2>
+              <p>There are six locals in Mosswood. Take your time; they'll come to you.</p>
+              <div class="quest-progress"><div class="quest-track"><span id="questProgress"></span></div><strong id="questProgressText">1 OF 6</strong></div>
+              <div id="questComplete" class="quest-complete" hidden>All six neighbors are in your field guide. What a lovely little crew.</div>
+              <div class="quest-foot"><span>ONE TRAIL, NO RUSH</span><span>✳</span></div>
+            </section>
+
+            <section class="paper-card crew-card">
+              <div class="section-heading"><div><p class="card-overline">YOUR TRAIL COMPANIONS</p><h2>Little crew <span id="partyCount" class="crew-count">01</span></h2></div><span class="crew-flower" aria-hidden="true">❋</span></div>
+              <div id="partyList" class="party-list"></div>
+              <p class="party-footnote"><span aria-hidden="true">✦</span> Tap a friend to let them lead.</p>
+            </section>
+
+            <section class="field-notes paper-card">
+              <div class="section-heading notes-heading"><div><p class="card-overline">POCKET FIELD NOTES</p><h2>What you've met</h2></div><span id="notesBadge" class="notes-badge">1 / 6</span></div>
+              <div id="speciesGrid" class="species-grid" aria-label="Discovered creatures"></div>
+            </section>
+
+            <section class="paper-card journal-entry" aria-live="polite">
+              <div class="entry-stamp" aria-hidden="true">TODAY<br>✳</div>
+              <div><p class="card-overline">LAST LITTLE MOMENT</p><p id="journalText" class="journal-text">Pipkin joined your walk. The forest already feels a little smaller.</p></div>
+            </section>
+          </aside>
+        </div>
+      </main>
+
+      <footer class="page-footer"><span>TAKE ONLY MEMORIES <i>✳</i> LEAVE ONLY FOOTPRINTS</span><span>MADE FOR A SLOW AFTERNOON <span class="footer-heart">♥</span></span></footer>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
