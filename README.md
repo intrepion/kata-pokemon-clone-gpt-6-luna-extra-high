@@ -1,5 +1,9 @@
 # Mosswood Field Club
 
+## Play online
+
+[Play Mosswood Field Club](https://intrepion.github.io/kata-pokemon-clone-gpt-6-luna-extra-high/) — free, playable in your browser.
+
 A small, original browser adventure about exploring a forest, meeting wild creatures, and inviting a few along. It borrows the familiar rhythm of a monster-catching RPG while using its own setting, creatures, pixel art, and names.
 
 ## Play
