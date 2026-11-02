@@ -20,3 +20,7 @@ Open `index.html` in a modern browser. There is no build step, package install, 
 - Use **Start over** to begin a fresh expedition.
 
 The game runs entirely in the browser and stores its save in local storage. Clearing the browser's site data clears that save.
+
+## Arcade metadata
+
+See [docs/arcade-metadata.md](docs/arcade-metadata.md) for the game-owned manifest and screenshot provenance.
