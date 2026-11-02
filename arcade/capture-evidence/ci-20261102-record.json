@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "workflowCommit": "2b620a4dfdc3ffd45b3bc7ce8e9fac22e0e78d3f",
+  "sourceCommit": "9f958779411461f5a6a81a8eb08cd22b82d059f2",
+  "runId": "41451978958",
+  "url": "http://127.0.0.1:4209/",
+  "inputs": {
+    "index.html": "6e1c4ab2b99bbad0efae692f4301a8d3c78031fec4886d28e0b770513a5480c6",
+    "style.css": "66d1061f1d8d83bf43e637df74bd4ab924b50347385f98b14816f1023926f637",
+    "game.js": "4433c669a368eb05644579e8398606447f21b1dd68c06cf66d43f6666cd81658"
+  },
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 1000
+  },
+  "externalFonts": "blocked; system fallback",
+  "screenshots": [
+    "mosswood-01.png"
+  ]
+}

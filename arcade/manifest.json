@@ -1,6 +1,27 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "gameId": "kata-pokemon-clone-gpt-6-luna-extra-high",
   "playUrl": "https://intrepion.github.io/kata-pokemon-clone-gpt-6-luna-extra-high/",
-  "screenshots": []
+  "screenshots": [
+    {
+      "path": "arcade/screenshots/ci-20261102-01.jpg",
+      "sha256": "995301d75d5786f1fc09aa079b6a1bfe0925a520e09ae77c93aa96da1224cf55",
+      "alt": "Mosswood Field Club gameplay, view 1",
+      "provenance": {
+        "kind": "ci_gameplay_capture",
+        "sourcePath": "arcade/capture-evidence/ci-20261102-01.png",
+        "sourceSha256": "10a5543b7ec0e525d2057ca970c41c677715e7d815a20b83606aa5dbdca60436",
+        "captureCommit": "9f958779411461f5a6a81a8eb08cd22b82d059f2",
+        "workflowRunId": "41451978958",
+        "inputHashes": {
+          "index.html": "6e1c4ab2b99bbad0efae692f4301a8d3c78031fec4886d28e0b770513a5480c6",
+          "style.css": "66d1061f1d8d83bf43e637df74bd4ab924b50347385f98b14816f1023926f637",
+          "game.js": "4433c669a368eb05644579e8398606447f21b1dd68c06cf66d43f6666cd81658"
+        },
+        "publishedFilesVerifiedAt": "2026-11-02T19:01:20Z",
+        "captureRecordPath": "arcade/capture-evidence/ci-20261102-record.json",
+        "captureRecordSha256": "a472cac2937341e5b538b1f699810174f1388fed26fff5a3d61ca192069d9b33"
+      }
+    }
+  ]
 }
